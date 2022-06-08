@@ -6,4 +6,4 @@ const server = http.createServer((req, res) => {
   fs.createReadStream('index.html').pipe(res);
 })
 
-server.listen(process.env.PORT || 8001)
+server.listen(process.env.PORT || 8001, () => console.log(`Server running on port ${process.env.PORT || 8001}!`))
