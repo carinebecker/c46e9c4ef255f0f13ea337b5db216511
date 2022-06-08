@@ -6,23 +6,97 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Desafio 03</title>
+  <title>Desafio 03
+
+  </title>
 </head>
 
 <body>
-  <h1>Desafio 3 🪖</h1>
+  <div class="div-body">
+    <div>
+      <h1>Desafio 3 </h1>
+    </div>
+    <img id="swap" class="magictime" src="https://lexartlabs.com/assets/images/logo/lexart-logo-white.svg" />
+  </div>
+
   <label for="codigo">
     Codigo
-    <input name="codigo" id="codigoInput" type="text" />
+    <input name="codigo" class="in1" id="codigoInput" type="text" />
   </label>
   <label for="peso">
     Peso
-    <input name="peso" id="pesoInput" type="number" />
+    <input name="peso" class="in1" id="pesoInput" type="number" />
   </label>
-  <button type="button" onclick="search()">Buscar</button>
-  <div id="resultList">
+  <button class="b1" type="button" onclick="search()">Buscar</button>
+  <div class="magictime" id="resultList">
   </div>
-  <p id="totalValue"></p>
+  <p id="totalValue" class="magictime"></p>
+  <link rel="stylesheet" href="https://www.minimamente.com/project/magic/dist-test/magic.min.css">
+  <style lang="scss">
+    @import url("https://fonts.googleapis.com/css?family=Noto+Sans:400,700");
+
+    body {
+      background: rgb(73, 73, 73);
+      color: white;
+      padding: 4em 8em;
+      text-align: center;
+      font-family: monospace;
+    }
+
+    label {
+      font-size: 28px;
+    }
+
+    .in1 {
+      height: 50px;
+      border-radius: 50px;
+      height: 40px;
+      background: #e0e0e0;
+      box-shadow: -1px 1px 6px 0px #ddd;
+      border: #3e3e3e;
+      margin: 0 1em;
+      width: 70px;
+      text-align: center;
+      padding: 0 9px;
+    }
+
+    .b1 {
+      margin-left: 2em;
+      border-radius: 50px;
+      height: 60px;
+      width: 160px;
+      font-size: 28px;
+      border: transparent;
+      color: white;
+      background: #494949;
+      box-shadow: inset 22px 22px 44px #3e3e3e,
+        inset -22px -22px 44px #545454;
+
+    }
+
+    .magictime {
+      -webkit-animation-duration: 1.5s;
+      animation-duration: 1.5s;
+      -webkit-animation-fill-mode: both;
+      animation-fill-mode: both;
+      font-weight: 28px;
+    }
+
+    .div-body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .div-body img {
+      height: 86px;
+      margin-left: 6em;
+    }
+
+    .div-body h1 {
+      font-size: 82px;
+    }
+  </style>
   <script>
     const data = [
       {
@@ -136,9 +210,15 @@
       let weight = Number(document.getElementById("pesoInput").value);
       let list = document.getElementById("resultList");
       let total = document.getElementById("totalValue");
+      let help = document.getElementById("swap");
 
       list.innerHTML = '';
-
+      help.classList.add('spaceInDown');
+      list.classList.add('vanishIn');
+      setInterval(() => {
+        help.classList.remove('spaceInDown');
+        list.classList.add('vanishIn');
+      }, 2000);
       if (productCode && weight) {
         let less = weight - ((weight * 5) / 100);
         let more = weight + ((weight * 5) / 100);
