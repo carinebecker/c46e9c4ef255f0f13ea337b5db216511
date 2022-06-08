@@ -43,12 +43,11 @@
       font-family: monospace;
     }
 
-    #resultList {
+    .help1 {
       padding: 2em 5em;
       border: #fffbfb1a solid 1px;
       border-radius: 50px;
-      margin: 2em auto;
-
+      margin: 2em auto !important;
     }
     
     #resultList,
@@ -79,6 +78,7 @@
       margin-left: 2em;
       border-radius: 50px;
       height: 60px;
+      cursor: pointer;
       width: 160px;
       font-size: 28px;
       border: transparent;
@@ -226,10 +226,11 @@
       let list = document.getElementById("resultList");
       let total = document.getElementById("totalValue");
       let help = document.getElementById("swap");
-
+      list.classList.remove('help1');
       list.innerHTML = '';
       help.classList.add('spaceInDown');
       list.classList.add('vanishIn');
+      total.innerHTML = '';
       setInterval(() => {
         help.classList.remove('spaceInDown');
         list.classList.add('vanishIn');
@@ -251,7 +252,7 @@
           li.innerHTML = `${item.name} - ${item.moneda}${item.price}`;
           sommatory += item.price;
         })
-
+        list.classList.add('help1');
         total.innerHTML = `Total: $${sommatory}`;
       } else {
         window.alert('Missing fields.')
